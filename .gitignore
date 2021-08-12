@@ -1,0 +1,14 @@
+# Pycharm Configuration
+.idea
+
+# Python venv
+__pycache__
+venv
+
+# Release build
+build
+dist
+*.spec
+
+# Scratch files
+scratch
