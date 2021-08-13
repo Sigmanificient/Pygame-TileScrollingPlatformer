@@ -1,3 +1,4 @@
+import random
 from time import perf_counter_ns
 from typing import Set
 
@@ -38,10 +39,13 @@ class App:
             self.pressed.remove(event.key)
 
     def run(self) -> None:
+        # Temporary white bg to simulate scratch background.
+        viewport.fill((255, 255, 255))
+
         for x in range(5):
             for y in range(5):
                 viewport.blit(
-                    TILE_SPRITES['block_gold'],
+                    random.choice(list(TILE_SPRITES.values())),
                     (x * TILE_SIZE, y * TILE_SIZE)
                 )
 
