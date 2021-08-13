@@ -1,8 +1,9 @@
+from time import perf_counter_ns
 from typing import Set
 
 import pygame
 
-from . import FPS_LIMIT, TITLE
+from . import FPS_LIMIT, TITLE, screen
 
 
 class App:
@@ -26,7 +27,7 @@ class App:
             if event.key == pygame.K_f:
                 self.debug = not self.debug
 
-                self.fps_limit = -1 if self.debug else FPS_LIMIT
+                self.fps_limit = 1000 if self.debug else FPS_LIMIT
 
                 if not self.debug:
                     pygame.display.set_caption(TITLE)
@@ -36,16 +37,17 @@ class App:
 
     def run(self) -> None:
         while self.is_running:
-
-            if self.debug:
-                pygame.display.set_caption(
-                    f"{TITLE} - {self.clock.get_fps():.0f} fps"
-                )
+            marker = perf_counter_ns()
 
             for event in pygame.event.get():
                 self.handle_event(event)
 
-            pygame.display.update()
+            if self.debug:
+                pygame.display.set_caption(
+                    f"{TITLE} - {self.clock.get_fps():.0f} fps "
+                    f"- {(perf_counter_ns() - marker) / 1000:.0f} µs"
+                )
+
             self.clock.tick(self.fps_limit)
 
     def __del__(self) -> None:

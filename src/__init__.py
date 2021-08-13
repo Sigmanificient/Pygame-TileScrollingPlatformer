@@ -1,3 +1,4 @@
+from .functions.loaders import load_sprites_from_dir
 from typing import Tuple
 
 import pygame
