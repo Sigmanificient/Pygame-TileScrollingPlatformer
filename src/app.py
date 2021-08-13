@@ -3,8 +3,9 @@ from typing import Set
 
 import pygame
 
-from . import FPS_LIMIT, TITLE, TILE_SPRITES, TILE_SIZE, screen, viewport, \
-    SCREEN_SIZE
+from . import (
+    FPS_LIMIT, TITLE, TILE_SPRITES, TILE_SIZE, screen, viewport,  SCREEN_SIZE
+)
 
 
 class App:
@@ -40,7 +41,8 @@ class App:
         for x in range(5):
             for y in range(5):
                 viewport.blit(
-                    TILE_SPRITES['block_gold'], (x * TILE_SIZE, y * TILE_SIZE)
+                    TILE_SPRITES['block_gold'],
+                    (x * TILE_SIZE, y * TILE_SIZE)
                 )
 
         screen.blit(pygame.transform.scale(viewport, SCREEN_SIZE), (0, 0))
