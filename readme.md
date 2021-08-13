@@ -1,4 +1,4 @@
-# Pygame TileScrollingPlatformer
+# ![](img/icon.png) Pygame TileScrollingPlatformer
 
 A pygame implementation of the scratch
 [ Tile Scrolling Platformer](https://www.youtube.com/watch?v=Fl-LX94Z4Cc&list=PLy4zsTUHwGJIc90UaTKd-wpIH12FCSoLh)
