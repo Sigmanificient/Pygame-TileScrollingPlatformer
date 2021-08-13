@@ -16,6 +16,8 @@ ASSETS_FOLDER: str = 'assets'
 TEXTURES_FOLDER: str = f'{ASSETS_FOLDER}/textures'
 
 screen: pygame.display = pygame.display.set_mode(SCREEN_SIZE)
+viewport: pygame.Surface = pygame.Surface((WIDTH // 2, HEIGHT // 2))
+
 pygame.display.set_caption(TITLE)
 icon: pygame.Surface = pygame.image.load("assets/icon.png").convert_alpha()
 pygame.display.set_icon(icon)
