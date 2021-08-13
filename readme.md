@@ -22,19 +22,12 @@ into python without any trouble, however a lot of them actually needs complete
 rethinking, for instance `when ... pressed`, or harder `create clone`
 , `broadcast` and more...
 
-2 - Some algorithms have been thought within scratch system which brings the
-question of their usage in a python implementation, leading to an interesting
-part of adaption from the Original project. As an example, if the costumes
-within scratch is something no one would even try changing, with pygame, loading
-lot of tiny sprite isn't a good approach, and it could - **will** - be replaced
-with something as spreadsheet.
-
-3 - Scratch have its own online ecosystem, and even throughout the amelioration
+2 - Scratch have its own online ecosystem, and even throughout the amelioration
 its has received, is still subject to hard limitation (global 300 clone limit,
 fixed 4/3 screen size, low fps limit, etc...). Without these limitations, the
 doors open to a new dimension of possibilities.
 
-4 - Griffpatch tutorial is really well-made and explained, and this pygame
+3 - Griffpatch tutorial is really well-made and explained, and this pygame
 implementation project will allow me to learn a lot about some game mechanics,
 which will be useful for future games.
 
