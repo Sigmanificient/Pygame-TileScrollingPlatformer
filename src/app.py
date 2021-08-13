@@ -41,7 +41,7 @@ class App:
             pygame.display.update()
 
         while self.is_running:
-            marker = perf_counter_ns()
+            marker: float = perf_counter_ns()
 
             for event in pygame.event.get():
                 self.handle_event(event)

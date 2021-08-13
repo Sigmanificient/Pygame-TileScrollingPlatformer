@@ -1,5 +1,5 @@
 from .functions.loaders import load_sprites_from_dir
-from typing import Tuple
+from typing import Tuple, Dict
 
 import pygame
 
@@ -20,8 +20,8 @@ pygame.display.set_caption(TITLE)
 icon: pygame.Surface = pygame.image.load("assets/icon.png").convert_alpha()
 pygame.display.set_icon(icon)
 
-TILE_SIZE = 32
-TILE_SPRITES = load_sprites_from_dir(
+TILE_SIZE: int = 32
+TILE_SPRITES: Dict[str, pygame.Surface] = load_sprites_from_dir(
     f"{TEXTURES_FOLDER}/tiles",
     (
         "block_gold",
