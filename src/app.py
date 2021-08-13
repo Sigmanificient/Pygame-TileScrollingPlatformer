@@ -3,7 +3,7 @@ from typing import Set
 
 import pygame
 
-from . import FPS_LIMIT, TITLE, screen
+from . import FPS_LIMIT, TITLE, screen, TILE_SPRITES, TILE_SIZE
 
 
 class App:
@@ -36,6 +36,10 @@ class App:
             self.pressed.remove(event.key)
 
     def run(self) -> None:
+        for y in range(10):
+            screen.blit(TILE_SPRITES['block_gold'], (0, y * TILE_SIZE))
+            pygame.display.update()
+
         while self.is_running:
             marker = perf_counter_ns()
 
