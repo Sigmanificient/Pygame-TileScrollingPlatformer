@@ -50,8 +50,8 @@ class App:
                 Tile(
                     random.choice(list(Tile.SPRITES.keys())),
                     (x * Tile.SIZE - camera.x, y * Tile.SIZE - camera.y)
-                ) for x in range(5)
-            ] for y in range(5)
+                ) for x in range(Tile.TILE_COUNT_X)
+            ] for y in range(Tile.TILE_COUNT_Y)
         ]
 
         while self.is_running:
@@ -64,6 +64,8 @@ class App:
 
             for line in tiles:
                 for tile in line:
+                    tile.update(camera)
+
                     viewport.blit(
                         tile.sprite,
                         (
