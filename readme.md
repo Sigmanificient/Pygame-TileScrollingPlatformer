@@ -1,5 +1,12 @@
 # ![](img/icon.png) Pygame TileScrollingPlatformer
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Sigmanificient/Pygame-TileScrollingPlatformer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Sigmanificient/Pygame-TileScrollingPlatformer/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Sigmanificient/Pygame-TileScrollingPlatformer/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Sigmanificient/Pygame-TileScrollingPlatformer/build-status/master)
+![Lines of code](https://img.shields.io/tokei/lines/github/Sigmanificient/Pygame-TileScrollingPlatformer)
+![GitHub repo size](https://img.shields.io/github/repo-size/Sigmanificient/Pygame-TileScrollingPlatformer)
+![GitHub all releases](https://img.shields.io/github/downloads/Sigmanificient/Pygame-TileScrollingPlatformer/total)
+
+
 A pygame implementation of the scratch
 [ Tile Scrolling Platformer](https://www.youtube.com/watch?v=Fl-LX94Z4Cc&list=PLy4zsTUHwGJIc90UaTKd-wpIH12FCSoLh)
 tutorial series from
