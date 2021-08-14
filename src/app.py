@@ -4,9 +4,8 @@ from typing import Set
 
 import pygame
 
-from . import (
-    FPS_LIMIT, TITLE, TILE_SPRITES, TILE_SIZE, screen, viewport,  SCREEN_SIZE
-)
+from . import FPS_LIMIT, TITLE, screen, viewport,  SCREEN_SIZE
+from .classes.tiles import Tile
 
 
 class App:
@@ -45,15 +44,21 @@ class App:
             self.fps_limit = 1000
 
     def run(self) -> None:
+        tiles = [
+            [
+                Tile(
+                    random.choice(list(Tile.SPRITES.keys())),
+                    (x * Tile.SIZE, y * Tile.SIZE)
+                ) for x in range(5)
+            ] for y in range(5)
+        ]
+
         # Temporary white bg to simulate scratch background.
         viewport.fill((255, 255, 255))
 
-        for x in range(5):
-            for y in range(5):
-                viewport.blit(
-                    random.choice(list(TILE_SPRITES.values())),
-                    (x * TILE_SIZE, y * TILE_SIZE)
-                )
+        for line in tiles:
+            for tile in line:
+                viewport.blit(tile.sprite, tile.rect)
 
         screen.blit(pygame.transform.scale(viewport, SCREEN_SIZE), (0, 0))
         pygame.display.update()
