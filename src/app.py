@@ -37,9 +37,9 @@ class App:
         if self.debug:
             self.debug = False
             self.fps_limit = FPS_LIMIT
+            pygame.display.set_caption(TITLE)
 
         else:
-            pygame.display.set_caption(TITLE)
             self.debug = True
             # The more fps, the more cpu usage
             self.fps_limit = 1000
