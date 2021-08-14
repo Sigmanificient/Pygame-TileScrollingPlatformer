@@ -28,15 +28,21 @@ class App:
             self.pressed.add(event.key)
 
             if event.key == pygame.K_f:
-                self.debug = not self.debug
-
-                self.fps_limit = 1000 if self.debug else FPS_LIMIT
-
-                if not self.debug:
-                    pygame.display.set_caption(TITLE)
+                self.toggle_debug_mode()
 
         elif event.type == pygame.KEYUP:
             self.pressed.remove(event.key)
+
+    def toggle_debug_mode(self):
+        if self.debug:
+            self.debug = False
+            self.fps_limit = FPS_LIMIT
+
+        else:
+            pygame.display.set_caption(TITLE)
+            self.debug = True
+            # The more fps, the more cpu usage
+            self.fps_limit = 1000
 
     def run(self) -> None:
         # Temporary white bg to simulate scratch background.
