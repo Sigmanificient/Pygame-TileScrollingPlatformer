@@ -1,4 +1,3 @@
-from time import perf_counter_ns
 from typing import Set
 
 import pygame
@@ -18,6 +17,7 @@ class App:
         self.fps_limit = FPS_LIMIT
 
         self.pressed: Set[int] = set()
+        self.tiles = Tiles(16, 13)
 
     def handle_event(self, event: pygame.event.Event) -> None:
         if event.type == pygame.QUIT:
@@ -43,28 +43,28 @@ class App:
             # The more fps, the more cpu usage
             self.fps_limit = 1000
 
+    def update(self):
+        # Temporary white bg to simulate scratch background.
+        viewport.fill((255, 255, 255))
+
+        camera.update(self.pressed)
+        self.tiles.draw(viewport, camera)
+
+        screen.blit(pygame.transform.scale(viewport, SCREEN_SIZE), (0, 0))
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            self.handle_event(event)
+
     def run(self) -> None:
-        tiles = Tiles(16, 13)
-
         while self.is_running:
-            marker: float = perf_counter_ns()
-
-            # Temporary white bg to simulate scratch background.
-            viewport.fill((255, 255, 255))
-
-            camera.update(self.pressed)
-            tiles.draw(viewport, camera)
-
-            screen.blit(pygame.transform.scale(viewport, SCREEN_SIZE), (0, 0))
-            pygame.display.update()
-
-            for event in pygame.event.get():
-                self.handle_event(event)
+            self.update()
 
             if self.debug:
+                fps = self.clock.get_fps()
+
                 pygame.display.set_caption(
-                    f"{TITLE} - {self.clock.get_fps():.0f} fps "
-                    f"- {(perf_counter_ns() - marker) / 1000:.0f} µs"
+                    f"{TITLE} - {fps:.0f} fps - {(1 / fps) * 1000:.1f} µs"
                 )
 
             self.clock.tick(self.fps_limit)
