@@ -1,12 +1,11 @@
-import random
 from time import perf_counter_ns
 from typing import Set
 
 import pygame
 
-from . import FPS_LIMIT, TITLE, screen, viewport,  SCREEN_SIZE
-from .classes.tiles import Tile
+from . import FPS_LIMIT, TITLE, screen, viewport, SCREEN_SIZE
 from .classes.camera import camera
+from .classes.tiles import Tiles
 
 
 class App:
@@ -45,14 +44,7 @@ class App:
             self.fps_limit = 1000
 
     def run(self) -> None:
-        tiles = [
-            [
-                Tile(
-                    random.choice(list(Tile.SPRITES.keys())),
-                    (x * Tile.SIZE - camera.x, y * Tile.SIZE - camera.y)
-                ) for x in range(Tile.TILE_COUNT_X)
-            ] for y in range(Tile.TILE_COUNT_Y)
-        ]
+        tiles = Tiles(16, 13)
 
         while self.is_running:
             marker: float = perf_counter_ns()
@@ -61,18 +53,7 @@ class App:
             viewport.fill((255, 255, 255))
 
             camera.update(self.pressed)
-
-            for line in tiles:
-                for tile in line:
-                    tile.update(camera)
-
-                    viewport.blit(
-                        tile.sprite,
-                        (
-                            tile.rect.x - camera.x,
-                            tile.rect.y - camera.y
-                        )
-                    )
+            tiles.draw(viewport, camera)
 
             screen.blit(pygame.transform.scale(viewport, SCREEN_SIZE), (0, 0))
             pygame.display.update()
